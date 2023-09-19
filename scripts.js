@@ -7,14 +7,10 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase()
-    // console.log(playerSelection)
-    let result = '';
+    let result = 'Draw';
     
     if (playerSelection == "rock") {
         switch (computerSelection) {
-            case "rock" :
-                result = 'Draw';
-                break;
             case "paper" :
                 result = 'You Lose';
                 break;
@@ -26,9 +22,6 @@ function playRound(playerSelection, computerSelection) {
         switch (computerSelection) {
             case "rock" :
                 result = 'You Win';
-                break;
-            case "paper" :
-                result = 'Draw';
                 break;
             case "scissor" :
                 result = 'You Lose';
@@ -42,9 +35,6 @@ function playRound(playerSelection, computerSelection) {
             case "paper" :
                 result = 'You Win';
                 break;
-            case "scissor" :
-                result = 'Draw';
-                break;
         }
     }
     console.log('You ' + playerSelection + '/ /' + 'COM ' + computerSelection);
@@ -52,8 +42,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    const playerSelection = '';
-    const computerSelection = '';
+    let playerSelection = '';
+    let computerSelection = '';
     for (let i = 0; i < 5; i++) {
          playerSelection = prompt("Input Rock, Paper, or Scissor : ");
          computerSelection = getComputerChoice();
