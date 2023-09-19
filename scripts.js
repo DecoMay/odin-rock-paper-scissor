@@ -47,9 +47,22 @@ function playRound(playerSelection, computerSelection) {
                 break;
         }
     }
-    console.log('You ' +playerSelection + '/ /' + 'COM ' + computerSelection);
+    console.log('You ' + playerSelection + '/ /' + 'COM ' + computerSelection);
     return result;
 }
 
+function game() {
+    const playerSelection = '';
+    const computerSelection = '';
+    for (let i = 0; i < 5; i++) {
+         playerSelection = prompt("Input Rock, Paper, or Scissor : ");
+         computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
+
+
 // console.log(getComputerChoice())
-console.log(playRound("Rock", getComputerChoice()))
+// console.log(playRound(playerSelection, computerSelection));
+game();
