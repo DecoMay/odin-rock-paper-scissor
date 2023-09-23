@@ -1,6 +1,6 @@
 function getComputerChoice() {
-    let validAction = ["rock", "paper", "scissor"];
-    let action = validAction[Math.floor(Math.random() * 3)] 
+    const validAction = ["rock", "paper", "scissor"];
+    const action = validAction[Math.floor(Math.random() * 3)] 
     
     return action;
 }
@@ -44,13 +44,21 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerSelection = '';
     let computerSelection = '';
-    for (let i = 0; i < 5; i++) {
-         playerSelection = prompt("Input Rock, Paper, or Scissor : ");
-         computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-    }
+    // for (let i = 0; i < 5; i++) {
+    //      playerSelection = prompt("Input Rock, Paper, or Scissor : ");
+    //      computerSelection = getComputerChoice();
+    //     console.log(playRound(playerSelection, computerSelection));
+    // }
+    // buttonPaper.onclick = console.log("PAPER");
+
+    buttonPaper.addEventListener('click', () => {
+        console.log("PAPER");
+    });
 }
 
+const buttonRock = document.querySelector('#rock');
+const buttonPaper = document.querySelector('#paper');
+const buttonScissor = document.querySelector('#scissor');
 
 
 // console.log(getComputerChoice())
