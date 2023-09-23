@@ -2,6 +2,9 @@ const buttonRock = document.querySelector('#rock');
 const buttonPaper = document.querySelector('#paper');
 const buttonScissor = document.querySelector('#scissor');
 const buttonRestart = document.querySelector('#restartgame')
+const playerScoreP = document.querySelector('#playerScoreP');
+const comScoreP = document.querySelector('#comScoreP');
+const roundWinnerP = document.querySelector('#roundWinnerP');
 
 function getComputerChoice() {
     const validAction = ["rock", "paper", "scissor"];
@@ -27,21 +30,46 @@ function playRound(playerAction, comAction) {
     }
 }
 
+function updateScore() {
+    playerScoreP.textContent = `Player Score : ${playerScore}`;
+    comScoreP.textContent = `Computer Score : ${comScore}`;
+    roundWinnerP.textContent = `Round Winner : ${roundWinner}`;
+}
+
+function changeColor() {
+    if (roundWinner === 'Player') {
+        roundWinnerP.setAttribute('style', 'background: green; color: white');
+    } else if (roundWinner === 'Computer') {
+        roundWinnerP.setAttribute('style', 'background: red; color: white');
+    } else {
+        roundWinnerP.setAttribute('style', 'background: orange; color: white');
+    }
+}
+
 function restartGame() {
     playerScore = 0;
     comScore = 0;
+    roundWinner = '';
+    updateScore();
+
+}
+
+function gameStatus() {
+    if (playerScore === 5 || comScore === 5) {
+        alert(`${roundWinner} Wins.Press restart`);
+        return true;
+    }
 }
 
 function playerSelection(playerAction) {
-    if (playerScore === 5 || comScore === 5) {
-        alert("Press restart");
-        return;
-    }
+    if (gameStatus()) return;
     const comAction = getComputerChoice();
     playRound(playerAction, comAction);
-    console.log(playerAction, comAction, roundWinner);
-    console.log(playerScore , ' ' , comScore);
-
+    updateScore();
+    changeColor();
+    // console.log(playerAction, comAction, roundWinner);
+    // console.log(playerScore , ' ' , comScore);
+    if (gameStatus()) return;
 }
 
 buttonRock.addEventListener('click', () => playerSelection('rock'));
